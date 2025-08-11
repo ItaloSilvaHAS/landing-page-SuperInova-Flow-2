@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow - Estude com foco, navegue com Flow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'flow-teal': '#4FD1C7',
+                        'flow-blue': '#2563EB', 
+                        'flow-light-blue': '#60A5FA',
+                        'flow-cyan': '#06B6D4',
+                        'flow-gray': '#F8FAFC',
+                        'flow-dark': '#0F172A',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-white dark:bg-flow-dark transition-colors duration-300 overflow-x-hidden">
+
+    <!-- Navigation Header - Melhorado com animações -->
+    <nav class="fixed top-0 w-full bg-white/95 dark:bg-flow-dark/95 backdrop-blur-sm z-50 border-b border-blue-100 dark:border-blue-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo animado -->
+                <div class="flex items-center space-x-3 group">
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-pulse-glow">
+                        <i class="fas fa-rocket text-white text-sm group-hover:animate-bounce"></i>
+                    </div>
+                    <div class="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">SuperInova</div>
+                </div>
+                
+                <!-- Menu Desktop com efeitos -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link relative text-gray-700 dark:text-gray-300 hover:text-flow-blue dark:hover:text-flow-cyan transition-all duration-300 group">
+                        <span>Início</span>
+                        <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:w-full transition-all duration-300"></div>
+                    </a>
+                    <a href="#empresa" class="nav-link relative text-gray-700 dark:text-gray-300 hover:text-flow-blue dark:hover:text-flow-cyan transition-all duration-300 group">
+                        <span>Empresa</span>
+                        <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:w-full transition-all duration-300"></div>
+                    </a>
+                    <a href="#Ferramentas" class="nav-link relative text-gray-700 dark:text-gray-300 hover:text-flow-blue dark:hover:text-flow-cyan transition-all duration-300 group">
+                        <span>Ferramentas</span>
+                        <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:w-full transition-all duration-300"></div>
+                    </a>
+                    <a href="#hardware" class="nav-link relative text-gray-700 dark:text-gray-300 hover:text-flow-blue dark:hover:text-flow-cyan transition-all duration-300 group">
+                        <span>Hardware</span>
+                        <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:w-full transition-all duration-300"></div>
+                    </a>
+                    <a href="#perguntas" class="nav-link relative text-gray-700 dark:text-gray-300 hover:text-flow-blue dark:hover:text-flow-cyan transition-all duration-300 group">
+                        <span>FAQ</span>
+                        <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:w-full transition-all duration-300"></div>
+                    </a>
+                </div>
+                
+                <!-- Botões de ação melhorados -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- Dark Mode Toggle -->
+                    <button id="dark-mode-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-800 transition-all duration-300 hover:scale-110 group">
+                        <i class="fas fa-moon dark:hidden group-hover:animate-bounce"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400 group-hover:animate-bounce"></i>
+                    </button>
+                    <button class="group bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <span class="flex items-center">
+                            <i class="fas fa-download mr-2 group-hover:animate-bounce"></i>
+                            Baixar Flow
+                        </span>
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center space-x-2">
+                    <button id="mobile-dark-mode-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:scale-110 transition-transform">
+                        <i class="fas fa-moon dark:hidden text-sm"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400 text-sm"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:scale-110 transition-transform">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-flow-dark border-t border-gray-100 dark:border-gray-800">
+            <div class="px-4 py-2 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900 rounded transition-all">Início</a>
+                <a href="#empresa" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900 rounded transition-all">Empresa</a>
+                <a href="#tools" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900 rounded transition-all">Ferramentas</a>
+                <a href="#hardware" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900 rounded transition-all">Hardware</a>
+                <a href="#perguntas" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900 rounded transition-all">FAQ</a>
+                <button class="mx-3 mt-2 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                    <i class="fas fa-download mr-2"></i>Baixar Flow
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Com animações impressionantes -->
+    <section id="home" class="relative min-h-screen flex items-center pt-16 overflow-hidden">
+        <!-- Background animado com partículas e formas -->
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50 to-cyan-50 dark:from-gray-900 dark:via-blue-900 dark:to-cyan-900">
+            
+            <!-- Partículas flutuantes animadas -->
+            <div class="absolute inset-0">
+                <!-- Números animados flutuando -->
+                <div class="floating-number absolute top-20 left-10 text-6xl font-bold text-blue-200 dark:text-blue-800 opacity-30 animate-float"></div>
+                <div class="floating-number absolute top-32 right-20 text-4xl font-bold text-cyan-200 dark:text-cyan-800 opacity-40 animate-bounce-slow"></div>
+                <div class="floating-number absolute bottom-40 left-1/4 text-5xl font-bold text-teal-200 dark:text-teal-800 opacity-25 animate-pulse-slow"></div>
+                <div class="floating-number absolute top-60 right-1/3 text-3xl font-bold text-blue-300 dark:text-blue-700 opacity-35 animate-float-reverse">∞</div>
+                
+                <!-- Círculos animados -->
+                <div class="absolute top-10 right-10 w-20 h-20 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full opacity-20 animate-pulse-glow"></div>
+                <div class="absolute bottom-20 left-20 w-16 h-16 bg-gradient-to-r from-teal-400 to-blue-400 rounded-full opacity-30 animate-bounce-gentle"></div>
+                <div class="absolute top-1/2 left-10 w-12 h-12 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full opacity-25 animate-spin-slow"></div>
+                
+                <!-- Linhas animadas conectando -->
+                <svg class="absolute inset-0 w-full h-full opacity-10">
+                    <defs>
+                        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#06B6D4"/>
+                            <stop offset="100%" stop-color="#2563EB"/>
+                        </linearGradient>
+                    </defs>
+                    <path class="animated-line" d="M100,100 Q300,200 500,150" stroke="url(#lineGradient)" stroke-width="2" fill="none"/>
+                    <path class="animated-line" d="M200,300 Q400,100 600,250" stroke="url(#lineGradient)" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            
+            <!-- Forma orgânica principal animada - superior direita -->
+            <div class="absolute top-0 right-0 w-[600px] h-[500px] transform translate-x-24 -translate-y-12 animate-float-slow">
+                <svg viewBox="0 0 600 500" class="w-full h-full">
+                    <path d="M200,0 C350,0 600,150 600,300 C600,450 450,500 300,500 C150,500 0,350 0,200 C0,100 100,0 200,0 Z" 
+                          fill="url(#gradient1)" class="animate-morph"/>
+                    <defs>
+                        <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#4FD1C7" stop-opacity="0.8">
+                                <animate attributeName="stop-opacity" values="0.8;0.6;0.8" dur="4s" repeatCount="indefinite"/>
+                            </stop>
+                            <stop offset="100%" stop-color="#2563EB" stop-opacity="0.6">
+                                <animate attributeName="stop-opacity" values="0.6;0.8;0.6" dur="4s" repeatCount="indefinite"/>
+                            </stop>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            
+            <!-- Forma orgânica menor esquerda animada -->
+            <div class="absolute bottom-20 left-0 w-[400px] h-[300px] transform -translate-x-16 animate-bounce-gentle">
+                <svg viewBox="0 0 400 300" class="w-full h-full">
+                    <path d="M100,50 C200,20 350,80 380,150 C400,220 300,280 200,270 C100,260 20,200 30,130 C40,80 60,60 100,50 Z" 
+                          fill="url(#gradient2)" class="animate-morph-slow"/>
+                    <defs>
+                        <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.4">
+                                <animate attributeName="stop-opacity" values="0.4;0.7;0.4" dur="6s" repeatCount="indefinite"/>
+                            </stop>
+                            <stop offset="100%" stop-color="#4FD1C7" stop-opacity="0.6">
+                                <animate attributeName="stop-opacity" values="0.6;0.4;0.6" dur="6s" repeatCount="indefinite"/>
+                            </stop>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            
+            <!-- Forma pequena decorativa animada -->
+            <div class="absolute top-40 left-1/3 w-[200px] h-[150px] animate-pulse-glow">
+                <svg viewBox="0 0 200 150" class="w-full h-full">
+                    <ellipse cx="100" cy="75" rx="90" ry="60" fill="url(#gradient3)" class="animate-scale-pulse"/>
+                    <defs>
+                        <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#60A5FA" stop-opacity="0.3">
+                                <animate attributeName="stop-opacity" values="0.3;0.6;0.3" dur="3s" repeatCount="indefinite"/>
+                            </stop>
+                            <stop offset="100%" stop-color="#4FD1C7" stop-opacity="0.5">
+                                <animate attributeName="stop-opacity" values="0.5;0.3;0.5" dur="3s" repeatCount="indefinite"/>
+                            </stop>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            
+            <!-- Efeito de brilho animado -->
+            <div class="absolute top-1/4 right-1/4 w-40 h-40 bg-gradient-radial from-cyan-400 via-transparent to-transparent opacity-20 animate-ping-slow"></div>
+            <div class="absolute bottom-1/3 left-1/3 w-32 h-32 bg-gradient-radial from-blue-400 via-transparent to-transparent opacity-15 animate-pulse-glow"></div>
+        </div>
+
+        <!-- Conteúdo principal -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Lado esquerdo - Texto principal animado -->
+                <div class="space-y-8 slide-in-left">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white leading-tight animate-text-glow">
+                        Estude com <span class="bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-500 bg-clip-text text-transparent animate-gradient">foco</span>,<br>
+                        navegue com <span class="bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-600 bg-clip-text text-transparent animate-gradient">Flow</span>.
+                    </h1>
+                    
+                    <p class="text-lg text-gray-600 dark:text-gray-300 max-w-lg leading-relaxed fade-in-up">
+                        Para mais produtividade, foco e fluidez nos estudos, o Flow é o navegador ideal.
+                    </p>
+                    
+                    <!-- Estatísticas animadas -->
+                    <div class="flex space-x-8 my-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-flow-blue dark:text-flow-cyan counter" data-target="150">0</div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">% Mais Foco</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-flow-blue dark:text-flow-cyan counter" data-target="24">0</div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">Horas/Dia</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-flow-blue dark:text-flow-cyan counter" data-target="100">0</div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">% Gratuito</div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <button class="group bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl animate-pulse-glow">
+                            <span class="flex items-center">
+                                <i class="fas fa-download mr-3 group-hover:animate-bounce"></i>
+                                Baixe o Flow agora!
+                            </span>
+                        </button>
+                        
+                        <!-- Tags de características -->
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium animate-bounce-gentle">Gratuito</span>
+                            <span class="px-3 py-1 bg-cyan-100 dark:bg-cyan-900 text-cyan-800 dark:text-cyan-200 rounded-full text-sm font-medium animate-bounce-slow">Sem Ads</span>
+                            <span class="px-3 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 rounded-full text-sm font-medium animate-float">Leve</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lado direito - Mockup animado -->
+                <div class="flex justify-center lg:justify-end slide-in-right">
+                    <div class="relative">
+                        <!-- Efeito de brilho por trás -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-lg transform rotate-2 scale-110 opacity-20 animate-pulse-glow"></div>
+                        
+                        <!-- Mockup do notebook mantido como você gostou -->
+                        <div class="relative w-80 h-64 bg-white dark:bg-gray-800 rounded-lg shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-500 hover:scale-105 group">
+                            <div class="h-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 rounded-lg flex items-center justify-center overflow-hidden">
+                                <!-- Simulação de interface do browser -->
+                                <div class="w-full h-full relative">
+                                    <!-- Barra superior do browser -->
+                                    <div class="h-8 bg-gray-300 dark:bg-gray-600 flex items-center px-3 space-x-2">
+                                        <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                                        <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                                        <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                                        <img src="Assets/Navegador IMG/logo.png" alt="Logo Flow" class="w-5 h-5"/>
+                                        <div class="flex-1 bg-white dark:bg-gray-700 rounded text-xs px-2 py-1 text-gray-600 dark:text-gray-300">flow.com</div>
+                                    </div>
+                                    
+                                    <!-- Área de conteúdo -->
+                                    <div class="p-4 space-y-3">
+                                        <div class="h-3 bg-blue-300 dark:bg-blue-600 rounded animate-pulse"></div>
+                                        <div class="h-2 bg-gray-300 dark:bg-gray-600 rounded w-3/4"></div>
+                                        <div class="h-2 bg-gray-300 dark:bg-gray-600 rounded w-1/2"></div>
+                                        
+                                        <!-- Sidebar simulada -->
+                                        <div class="absolute right-2 top-12 w-16 bg-cyan-100 dark:bg-cyan-800 rounded p-2 space-y-1">
+                                            <div class="w-3 h-3 bg-cyan-400 rounded"></div>
+                                            <div class="w-full h-1 bg-cyan-300 rounded"></div>
+                                            <div class="w-3 h-3 bg-blue-400 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Label animado -->
+                                <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-flow-blue text-white px-3 py-1 rounded-full text-xs font-medium animate-bounce-gentle opacity-90">
+                                    Baixe o Flow!
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Partículas flutuantes ao redor do mockup -->
+                        <div class="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full opacity-60 animate-ping-slow"></div>
+                        <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full opacity-40 animate-bounce-gentle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Segunda seção - "Projetado para estudantes" com animações -->
+    <section id="empresa" class="relative py-20 bg-white dark:bg-flow-dark overflow-hidden">
+        <!-- Background animado -->
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-10 right-10 w-32 h-32 bg-gradient-to-r from-blue-300 to-cyan-300 rounded-full animate-ping-slow"></div>
+            <div class="absolute bottom-10 left-10 w-24 h-24 bg-gradient-to-r from-teal-300 to-blue-300 rounded-full animate-bounce-gentle"></div>
+            <div class="absolute top-1/2 right-1/4 text-8xl font-bold text-blue-100 dark:text-blue-900 opacity-20 animate-float-slow">FLOW</div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-in-left animate">
+                <h2 class="text-3xl sm:text-4xl font-bold text-flow-blue dark:text-flow-cyan mb-4 animate-text-glow">
+                    Projetado para <span class="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">estudantes</span><br>
+                    feito para quem busca <span class="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent animate-gradient">performance</span>.
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Placeholder para imagem animado -->
+                <div class="slide-in-left">
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-lg opacity-20 group-hover:opacity-30 transition-opacity animate-pulse-glow"></div>
+                        <div class="relative w-full h-64 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 rounded-lg flex items-center justify-center card-hover">
+                            <!-- Mockup de produtividade -->
+                            <div class="w-full h-full p-6 space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="w-20 h-3 bg-blue-300 dark:bg-blue-600 rounded animate-pulse"></div>
+                                    <div class="w-12 h-3 bg-green-400 rounded animate-bounce-gentle">100%</div>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="w-full h-2 bg-cyan-200 dark:bg-cyan-700 rounded"></div>
+                                    <div class="w-3/4 h-2 bg-blue-200 dark:bg-blue-700 rounded"></div>
+                                    <div class="w-1/2 h-2 bg-teal-200 dark:bg-teal-700 rounded"></div>
+                                </div>
+                                <div class="flex space-x-2 justify-center">
+                                    <div class="w-6 h-6 bg-blue-400 rounded animate-bounce-slow"></div>
+                                    <div class="w-6 h-6 bg-cyan-400 rounded animate-float"></div>
+                                    <div class="w-6 h-6 bg-teal-400 rounded animate-pulse"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Texto animado -->
+                <div class="slide-in-right">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 animate-text-glow">
+                        Para mais produtividade, foco e fluidez nos estudos, o Flow é o navegador ideal.
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
+                        Leve e intuitivo, mantém sua organização e ritmo sem sair da internet, tornando a navegação um espaço de aprendizagem sem distrações.
+                    </p>
+                    
+                    <!-- Características com animações -->
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3 group">
+                            <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <span class="text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">Interface limpa e intuitiva</span>
+                        </div>
+                        <div class="flex items-center space-x-3 group">
+                            <div class="w-8 h-8 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <span class="text-gray-700 dark:text-gray-300 group-hover:text-cyan-600 dark:group-hover:text-teal-400 transition-colors">Ferramentas integradas de estudo</span>
+                        </div>
+                        <div class="flex items-center space-x-3 group">
+                            <div class="w-8 h-8 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <span class="text-gray-700 dark:text-gray-300 group-hover:text-teal-600 dark:group-hover:text-blue-400 transition-colors">Performance otimizada</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Ferramentas - Seguindo design do Figma -->
+    <section class="relative py-20 bg-white dark:bg-flow-dark overflow-hidden">
+        <!-- Background com formas orgânicas -->
+        <div class="absolute inset-0">
+            <!-- Forma orgânica lado direito -->
+            <div class="absolute bottom-0 right-0 w-[500px] h-[400px] transform translate-x-16 translate-y-16">
+                <svg viewBox="0 0 500 400" class="w-full h-full">
+                    <path d="M150,50 C300,30 450,100 480,200 C500,300 400,380 250,350 C100,320 50,200 80,100 C100,70 120,60 150,50 Z" 
+                          fill="url(#toolsGradient)" />
+                    <defs>
+                        <linearGradient id="toolsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#4FD1C7" stop-opacity="0.4"/>
+                            <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-flow-blue dark:text-flow-cyan mb-4">
+                    Ferramentas do navegador
+                </h2>
+            </div>
+            
+            <!-- Container horizontal como no Figma -->
+            <div class="relative bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden">
+                <!-- Navegação horizontal das ferramentas -->
+                <div class="flex overflow-x-auto scrollbar-hide">
+                    <!-- Bloco de texto -->
+                    <div class="min-w-[300px] p-8 border-r border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-sticky-note text-white text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Bloco de texto.</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                            Um bloco de notas sempre acessível na barra lateral do navegador. Ele é móvel, intuitivo, e simples. Faça anotações sem perder o que tem na tela, ele não some e nem fica aberto no navegador.
+                        </p>
+                    </div>
+                    
+                    <!-- Temporizador -->
+                    <div class="min-w-[300px] p-8 border-r border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-clock text-white text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Temporizador.</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                            Use o método Pomodoro, defina cronômetros e mantenha sua produtividade alta com lembretes úteis que te avisam sem tirar você do fluxo de estudos.
+                        </p>
+                    </div>
+                    
+                    <!-- Flashcards -->
+                    <div class="min-w-[300px] p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-layer-group text-white text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Flashcards.</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                            Com poucos cliques, você cria flashcards direto do navegador para revisar conteúdos de forma rápida, prática e organizada, dentro do navegador.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Setas de navegação -->
+                <div class="absolute left-4 top-1/2 transform -translate-y-1/2">
+                    <button class="w-10 h-10 bg-flow-blue text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+                <div class="absolute right-4 top-1/2 transform -translate-y-1/2">
+                    <button class="w-10 h-10 bg-flow-blue text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-flow-blue hover:bg-blue-700 dark:bg-flow-cyan dark:hover:bg-cyan-600 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105">
+                    Baixe o Flow agora!
+                </button>
+            </div>
+        </div>
+        
+        <!-- Seção adicional da barra lateral -->
+        <div class="mt-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                            Barra lateral de fácil acesso
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            A barra lateral do Flow é o seu painel de controle pessoal. Com acesso rápido a ferramentas, ela transforma sua navegação em uma experiência mais produtiva e organizada. Tudo que você precisa, a um clique.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                            <span class="text-gray-500 dark:text-gray-400"> <img src="Assets/Navegador IMG/side.png" alt="Descrição da imagem" class="w-full h-full object-cover rounded-lg" /></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hardware Section - Design do Figma -->
+    <section id="hardware" class="relative py-20 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+        <!-- Background com formas orgânicas -->
+        <div class="absolute inset-0">
+            <!-- Forma orgânica superior esquerda -->
+            <div class="absolute top-0 left-0 w-[400px] h-[300px] transform -translate-x-16 -translate-y-12">
+                <svg viewBox="0 0 400 300" class="w-full h-full">
+                    <path d="M100,50 C200,20 350,80 380,150 C400,220 300,280 200,270 C100,260 20,200 30,130 C40,80 60,60 100,50 Z" 
+                          fill="url(#hardwareGradient)" />
+                    <defs>
+                        <linearGradient id="hardwareGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#4FD1C7" stop-opacity="0.3"/>
+                            <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.5"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <!-- Lado esquerdo - Placeholder para imagem -->
+                <div>
+                    <div class="w-full h-80 bg-gray-300 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                        <span class="text-gray-500 dark:text-gray-400"> <img src="Assets/Navegador IMG/navegador.png" alt="Descrição da imagem" class="w-full h-full object-cover rounded-lg" /></span>
+                    </div>
+                </div>
+                
+                <!-- Lado direito - FAQ Accordion seguindo o Figma -->
+                <div>
+                    <!-- Acordeon expandible com gradientes azuis -->
+                    <div class="space-y-3">
+                        <!-- Hardware -->
+                        <div class="accordion-item">
+                            <button class="accordion-button w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all">
+                                <div class="flex items-center">
+                                    <i class="fas fa-plus mr-3"></i>
+                                    <span class="font-medium">Hardware</span>
+                                </div>
+                                <i class="fas fa-chevron-up accordion-icon transition-transform"></i>
+                            </button>
+                            <div class="accordion-content bg-white dark:bg-gray-800 px-6 py-4 rounded-b-lg shadow-lg">
+                                <p class="text-gray-600 dark:text-gray-300">Requisitos mínimos: 4GB RAM, processador dual-core, 200MB de espaço livre. <br> <br> Requisitos recomendados: 8GB RAM, processador quad-core, 500MB de espaço livre. <br> <br> Compatibilidade: Windows 10 ou superior, macOS Mojave ou superior.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Movimentação -->
+                        <div class="accordion-item">
+                            <button class="accordion-button w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-blue-400 to-blue-500 text-white rounded-lg hover:from-blue-500 hover:to-blue-600 transition-all">
+                                <div class="flex items-center">
+                                    <i class="fas fa-plus mr-3"></i>
+                                    <span class="font-medium">Movimentação</span>
+                                </div>
+                                <i class="fas fa-chevron-up accordion-icon transition-transform"></i>
+                            </button>
+                            <div class="accordion-content hidden bg-white dark:bg-gray-800 px-6 py-4 rounded-b-lg shadow-lg">
+                                <p class="text-gray-600 dark:text-gray-300">Navegação fluida e responsiva com animações otimizadas para máxima performance. Com teclas de atalho personalizáveis para facilitar a experiência do usuário.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Pergunta -->
+                        <div class="accordion-item">
+                            <button class="accordion-button w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-blue-300 to-blue-400 text-white rounded-lg hover:from-blue-400 hover:to-blue-500 transition-all">
+                                <div class="flex items-center">
+                                    <i class="fas fa-plus mr-3"></i>
+                                    <span class="font-medium">Pergunta</span>
+                                </div>
+                                <i class="fas fa-chevron-up accordion-icon transition-transform"></i>
+                            </button>
+                            <div class="accordion-content hidden bg-white dark:bg-gray-800 px-6 py-4 rounded-b-lg shadow-lg">
+                                <p class="text-gray-600 dark:text-gray-300">Compatível com Windows, macOS e Linux. Suporte completo disponível.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item adicional -->
+                        <div class="accordion-item">
+                            <button class="accordion-button w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-blue-200 to-blue-300 text-white rounded-lg hover:from-blue-300 hover:to-blue-400 transition-all">
+                                <div class="flex items-center">
+                                    <i class="fas fa-plus mr-3"></i>
+                                    <span class="font-medium">Suporte</span>
+                                </div>
+                                <i class="fas fa-chevron-up accordion-icon transition-transform"></i>
+                            </button>
+                            <div class="accordion-content hidden bg-white dark:bg-gray-800 px-6 py-4 rounded-b-lg shadow-lg">
+                                <p class="text-gray-600 dark:text-gray-300">Equipe de suporte especializada para estudantes e educadores.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item adicional -->
+                        <div class="accordion-item">
+                            <button class="accordion-button w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-blue-100 to-blue-200 text-white rounded-lg hover:from-blue-200 hover:to-blue-300 transition-all">
+                                <div class="flex items-center">
+                                    <i class="fas fa-plus mr-3"></i>
+                                    <span class="font-medium">Atualizações</span>
+                                </div>
+                                <i class="fas fa-chevron-up accordion-icon transition-transform"></i>
+                            </button>
+                            <div class="accordion-content hidden bg-white dark:bg-gray-800 px-6 py-4 rounded-b-lg shadow-lg">
+                                <p class="text-gray-600 dark:text-gray-300">Atualizações automáticas com novas ferramentas e melhorias.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item adicional -->
+                        <div class="accordion-item">
+                            <button class="accordion-button w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-cyan-100 to-blue-100 text-gray-700 rounded-lg hover:from-cyan-200 hover:to-blue-200 transition-all">
+                                <div class="flex items-center">
+                                    <i class="fas fa-plus mr-3"></i>
+                                    <span class="font-medium">Personalização</span>
+                                </div>
+                                <i class="fas fa-chevron-up accordion-icon transition-transform"></i>
+                            </button>
+                            <div class="accordion-content hidden bg-white dark:bg-gray-800 px-6 py-4 rounded-b-lg shadow-lg">
+                                <p class="text-gray-600 dark:text-gray-300">Temas personalizáveis e configurações avançadas para sua experiência.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Seção "Ideal para estudantes" -->
+    <section class="py-20 bg-white dark:bg-flow-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    Ideal para vestibulandos, concurseiros e<br>
+                    universitários.
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Sobre a equipe -->
+                <div>
+                    <div class="flex items-start">
+                        <div class="w-8 h-8 bg-flow-blue rounded flex items-center justify-center mr-4 mt-1">
+                            <i class="fas fa-plus text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-flow-blue dark:text-flow-cyan mb-4">Sobre a equipe</h3>
+                            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                A Inova é onde criatividade e tecnologia se encontram. Somos uma equipe de desenvolvedores, pesquisadores e especialistas em dados unidos para transformar ideias em soluções inovadoras.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Placeholder para imagem -->
+                <div>
+                    <div class="w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                        <span class="text-gray-500 dark:text-gray-400">Equipe Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="perguntas" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    Perguntas Frequentes
+                </h2>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="faq-item bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg">
+                    <button class="faq-button w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <span class="font-medium text-gray-900 dark:text-white">O Flow é gratuito?</span>
+                        <i class="fas fa-plus faq-icon text-flow-blue dark:text-flow-cyan transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4">
+                        <p class="text-gray-600 dark:text-gray-300">Sim! O Flow é completamente gratuito para estudantes.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg">
+                    <button class="faq-button w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <span class="font-medium text-gray-900 dark:text-white">Funciona em todos os sistemas operacionais?</span>
+                        <i class="fas fa-plus faq-icon text-flow-blue dark:text-flow-cyan transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4">
+                        <p class="text-gray-600 dark:text-gray-300">Sim! Compatível com Windows, macOS e Linux.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section - Melhorado com animações -->
+    <section class="relative py-20 bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 dark:from-gray-800 dark:via-blue-800 dark:to-cyan-800 text-white overflow-hidden">
+        <!-- Background animado -->
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-5 right-5 w-20 h-20 bg-white rounded-full animate-ping-slow"></div>
+            <div class="absolute bottom-5 left-5 w-16 h-16 bg-cyan-200 rounded-full animate-bounce-gentle"></div>
+            <div class="absolute top-1/2 right-1/4 text-7xl font-bold text-white opacity-10 animate-float-slow">FLOW</div>
+            <!-- Partículas flutuantes -->
+            <div class="absolute top-10 left-1/3 w-3 h-3 bg-white rounded-full animate-float"></div>
+            <div class="absolute bottom-20 right-1/2 w-2 h-2 bg-cyan-200 rounded-full animate-bounce-slow"></div>
+            <div class="absolute top-20 right-10 w-4 h-4 bg-teal-200 rounded-full animate-pulse"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6 animate-text-glow">
+                Pronto para estudar com mais <span class="bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent animate-gradient">foco</span>?
+            </h2>
+            <p class="text-xl text-blue-100 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Experimente agora o navegador feito sob medida para estudantes que buscam excelência acadêmica.
+            </p>
+            
+            <!-- Botões de ação melhorados -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button class="group bg-white text-blue-600 hover:bg-gray-100 font-bold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                    <span class="flex items-center">
+                        <i class="fas fa-download mr-3 group-hover:animate-bounce"></i>
+                        Baixar Agora
+                    </span>
+                </button>
+                
+                <button class="group border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+                    <span class="flex items-center">
+                        <i class="fas fa-play mr-3 group-hover:animate-bounce"></i>
+                        Ver Demo
+                    </span>
+                </button>
+            </div>
+            
+            <!-- Estatísticas impressionantes -->
+            <div class="grid grid-cols-3 gap-8 mt-12 max-w-2xl mx-auto">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white counter" data-target="95">0</div>
+                    <div class="text-sm text-blue-100">% Menos Distrações</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white counter" data-target="200">0</div>
+                    <div class="text-sm text-blue-100">% Mais Produtivo</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white">100%</div>
+                    <div class="text-sm text-blue-100">Gratuito</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gradiente decorativo -->
+        <div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 animate-gradient"></div>
+    </section>
+
+    <!-- Footer bonito e informativo -->
+    <footer class="relative bg-gradient-to-br from-gray-900 via-blue-900 to-cyan-900 dark:from-black dark:via-gray-900 dark:to-blue-900 text-white overflow-hidden">
+        <!-- Background animado do footer -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-10 left-1/4 w-40 h-40 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse-glow"></div>
+            <div class="absolute bottom-20 right-1/3 w-32 h-32 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full animate-bounce-gentle"></div>
+            <div class="absolute top-1/2 left-10 text-6xl font-bold text-blue-300 opacity-10 animate-float-slow">FLOW</div>
+            <div class="absolute bottom-10 right-10 text-4xl font-bold text-cyan-300 opacity-15 animate-float-reverse">∞</div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <!-- Seção principal do footer -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Coluna 1: Logo e descrição -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center animate-pulse-glow">
+                            <i class="fas fa-rocket text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Flow</h3>
+                            <p class="text-sm text-gray-300">SuperInova Browser</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed mb-6 max-w-md">
+                        O navegador definitivo para estudantes que buscam produtividade máxima. 
+                        Com ferramentas integradas de estudo, bloqueio de anúncios e interface otimizada 
+                        para foco total nos seus objetivos acadêmicos.
+                    </p>
+                    <!-- Estatísticas do footer -->
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-blue-400 counter" data-target="50000">0</div>
+                            <div class="text-xs text-gray-400">Usuários Ativos</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-cyan-400 counter" data-target="99">0</div>
+                            <div class="text-xs text-gray-400">% Satisfação</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-teal-400">24/7</div>
+                            <div class="text-xs text-gray-400">Suporte</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna 2: Links rápidos -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6 text-blue-400">Links Rápidos</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-300 hover:text-cyan-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-home w-4 mr-2 group-hover:animate-bounce"></i>
+                            Início
+                        </a></li>
+                        <li><a href="#empresa" class="text-gray-300 hover:text-cyan-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-building w-4 mr-2 group-hover:animate-bounce"></i>
+                            Sobre
+                        </a></li>
+                        <li><a href="#tools" class="text-gray-300 hover:text-cyan-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-tools w-4 mr-2 group-hover:animate-bounce"></i>
+                            Ferramentas
+                        </a></li>
+                        <li><a href="#hardware" class="text-gray-300 hover:text-cyan-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-cog w-4 mr-2 group-hover:animate-bounce"></i>
+                            Requisitos
+                        </a></li>
+                        <li><a href="#faq" class="text-gray-300 hover:text-cyan-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-question-circle w-4 mr-2 group-hover:animate-bounce"></i>
+                            FAQ
+                        </a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3: Recursos -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6 text-cyan-400">Recursos</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-download w-4 mr-2 group-hover:animate-bounce"></i>
+                            Download
+                        </a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-book w-4 mr-2 group-hover:animate-bounce"></i>
+                            Documentação
+                        </a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-users w-4 mr-2 group-hover:animate-bounce"></i>
+                            Comunidade
+                        </a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-headset w-4 mr-2 group-hover:animate-bounce"></i>
+                            Suporte
+                        </a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-shield-alt w-4 mr-2 group-hover:animate-bounce"></i>
+                            Privacidade
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Seção de redes sociais -->
+            <div class="border-t border-gray-700 pt-8 mb-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-6 md:mb-0">
+                        <h4 class="text-lg font-semibold mb-4 text-teal-400">Siga-nos</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 group">
+                                <i class="fab fa-twitter text-white group-hover:animate-bounce"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gradient-to-r from-blue-700 to-blue-800 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 group">
+                                <i class="fab fa-facebook text-white group-hover:animate-bounce"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 group">
+                                <i class="fab fa-instagram text-white group-hover:animate-bounce"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gradient-to-r from-gray-700 to-gray-800 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 group">
+                                <i class="fab fa-github text-white group-hover:animate-bounce"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 group">
+                                <i class="fab fa-youtube text-white group-hover:animate-bounce"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Newsletter -->
+                    <div class="text-center md:text-right">
+                        <h4 class="text-lg font-semibold mb-4 text-blue-400">Newsletter</h4>
+                        <div class="flex flex-col sm:flex-row max-w-md">
+                            <input type="email" placeholder="Seu email" 
+                                   class="px-4 py-2 bg-gray-800 border border-gray-600 rounded-l-lg sm:rounded-r-none focus:outline-none focus:border-cyan-400 text-white flex-1 mb-2 sm:mb-0">
+                            <button class="px-6 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 rounded-r-lg sm:rounded-l-none font-semibold transition-all duration-300 transform hover:scale-105">
+                                <i class="fas fa-paper-plane mr-2"></i>Assinar
+                            </button>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-2">Receba novidades e dicas de produtividade</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright e informações finais -->
+            <div class="border-t border-gray-700 pt-6">
+                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                    <div class="mb-4 md:mb-0">
+                        <p>&copy; 2025 Flow (SuperInova). Todos os direitos reservados.</p>
+                        <p class="mt-1">Desenvolvido com <i class="fas fa-heart text-red-500 animate-pulse"></i> para estudantes brasileiros</p>
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="hover:text-cyan-400 transition-colors duration-300">Termos de Uso</a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors duration-300">Política de Privacidade</a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors duration-300">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Elemento decorativo final -->
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 animate-gradient"></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

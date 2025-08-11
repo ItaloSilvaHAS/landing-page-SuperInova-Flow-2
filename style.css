@@ -1,0 +1,551 @@
+/* Clean CSS for Flow Landing Page - Following Figma Design */
+
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+/* Navigation styles */
+.nav-link.active {
+    color: #2563EB !important;
+    font-weight: 600;
+}
+
+/* Animações impressionantes e dinâmicas */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes float-slow {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+    }
+    33% {
+        transform: translateY(-15px) translateX(5px);
+    }
+    66% {
+        transform: translateY(5px) translateX(-5px);
+    }
+}
+
+@keyframes float-reverse {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(15px) rotate(5deg);
+    }
+}
+
+@keyframes bounce-gentle {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes bounce-slow {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+    }
+    50% {
+        transform: translateY(-12px) scale(1.05);
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(79, 209, 197, 0.3);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.1);
+        box-shadow: 0 0 40px rgba(79, 209, 197, 0.6);
+    }
+}
+
+@keyframes pulse-slow {
+    0%, 100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes spin-slow {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ping-slow {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    75%, 100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes morph {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+    }
+    33% {
+        transform: scale(1.05) rotate(1deg);
+    }
+    66% {
+        transform: scale(0.98) rotate(-1deg);
+    }
+}
+
+@keyframes morph-slow {
+    0%, 100% {
+        transform: scale(1);
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        transform: scale(1.02);
+        filter: hue-rotate(10deg);
+    }
+}
+
+@keyframes scale-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes gradient-shift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes text-glow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(37, 99, 235, 0.6), 0 0 30px rgba(79, 209, 197, 0.4);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Classes de animação */
+.animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+    animation: float-reverse 6s ease-in-out infinite;
+}
+
+.animate-bounce-gentle {
+    animation: bounce-gentle 4s ease-in-out infinite;
+}
+
+.animate-bounce-slow {
+    animation: bounce-slow 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+    animation: spin-slow 10s linear infinite;
+}
+
+.animate-ping-slow {
+    animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-morph {
+    animation: morph 6s ease-in-out infinite;
+}
+
+.animate-morph-slow {
+    animation: morph-slow 8s ease-in-out infinite;
+}
+
+.animate-scale-pulse {
+    animation: scale-pulse 4s ease-in-out infinite;
+}
+
+.animate-gradient {
+    animation: gradient-shift 6s ease infinite;
+    background-size: 200% 200%;
+}
+
+.animate-text-glow {
+    animation: text-glow 3s ease-in-out infinite;
+}
+
+/* Animation classes */
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.6s ease-out;
+}
+
+.slide-in-left.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.6s ease-out;
+}
+
+.slide-in-right.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* FAQ Accordion */
+.faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.faq-content.active {
+    max-height: 200px;
+    transition: max-height 0.3s ease-in;
+}
+
+.faq-icon {
+    transition: transform 0.3s ease;
+}
+
+.faq-icon.rotate {
+    transform: rotate(180deg);
+}
+
+/* Button hover effects */
+button {
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* Mobile menu transitions */
+#mobile-menu {
+    transition: all 0.3s ease;
+}
+
+#mobile-menu.show {
+    display: block;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2563EB;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #1d4ed8;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+    background: #374151;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #06B6D4;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #0891B2;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .fade-in-up {
+        animation-duration: 0.4s;
+    }
+    
+    h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-svg {
+        display: none;
+    }
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Custom utilities */
+.text-balance {
+    text-wrap: balance;
+}
+
+/* Smooth focus states */
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid #2563EB;
+    outline-offset: 2px;
+}
+
+/* Improved hover states */
+.group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+}
+
+.group:hover .group-hover\:translate-x-1 {
+    transform: translateX(0.25rem);
+}
+
+/* Hide scrollbar for tools section */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Accordion specific styles */
+.accordion-content {
+    transition: all 0.3s ease;
+}
+
+.accordion-icon {
+    transition: transform 0.3s ease;
+}
+
+/* Hardware accordion gradients */
+.accordion-item {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Special background gradients */
+.bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Floating elements */
+.floating-number {
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+}
+
+/* Enhanced glow effects */
+.animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+    filter: blur(0.5px);
+}
+
+/* SVG line animations */
+.animated-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawLine 8s ease-in-out infinite;
+}
+
+@keyframes drawLine {
+    0%, 100% {
+        stroke-dashoffset: 1000;
+        opacity: 0.1;
+    }
+    50% {
+        stroke-dashoffset: 0;
+        opacity: 0.3;
+    }
+}
+
+/* Enhanced button effects */
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+/* Improved text gradients */
+.text-gradient {
+    background: linear-gradient(45deg, #2563EB, #06B6D4, #4FD1C7);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 3s ease infinite;
+}
+
+/* Counter number effects */
+.counter {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.counter::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #2563EB, #06B6D4);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.counter:hover::after {
+    transform: scaleX(1);
+}
+
+/* Particle effects */
+.particle {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.6;
+    border-radius: 50%;
+}
+
+/* Loading animations for mockup */
+@keyframes loadingPulse {
+    0%, 100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Enhanced hover states for cards */
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Background texture */
+.hero-bg {
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(79, 209, 197, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+}
+
+/* Improved mobile responsiveness */
+@media (max-width: 768px) {
+    .floating-number {
+        font-size: 2rem !important;
+    }
+    
+    .animate-float-slow,
+    .animate-bounce-gentle {
+        animation-duration: 4s;
+    }
+}
